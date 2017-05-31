@@ -1,0 +1,32 @@
+<h2>users</h2>
+<br>
+<a href="/#!/">home</a>
+
+<table class="table" border="" ng-init="getUsers()">
+    <thead>
+        <tr>
+            <th>email</th>
+            <th>first name </th>
+            <th>last name</th>
+            <th>actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr ng-repeat="user in users">
+            <td>{{user.email}}</td>
+            <td>{{user.firstName}}</td>
+            <td>{{user.lastName}}</td>
+            <td>
+                <button ng-click="deleteUser(user.id)">delete</button>
+                <a href="/#!/users/edit/{{user.id}}">edit</a>
+                <button ng-click="set2View()"  >view</button>
+                <a ng-href="/#!/users/edit/{{user.id}}">aHref</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+    <br>
+    <button ng-click="reverse(); getUsers();">reverse</button>
+    <br>
+    <a href="/#!/users/add">add new user</a>
+

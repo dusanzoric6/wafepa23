@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<p2>Add new User</p2>
+<form ng-init="initUser()">
+    <label>email</label> <input type="text" ng-model="newUser.email"> <br>
+    <label>password</label> <input type="text" ng-model="newUser.password"> <br>
+    <label>confirm password</label> <input type="text" ng-model="newUser.passwordConfirm"> <br>
+    <label>first name</label> <input type="text" ng-model="newUser.firstName"> <br>
+    <label>last name</label> <input type="text" ng-model="newUser.lastName"> <br>
+    <button ng-click="saveUser()" ng-disabled="newUser.firstName.length==0" ng-hide="view">add</button>
+    <button ng-click="view=true">add</button>
+</form>
+</body>
+</html>
+
+
+"email":"email",
+"password":"123",
+"passwordConfirm":"123",
+"firstName":"dusan",
+"lastName":"zoric"
