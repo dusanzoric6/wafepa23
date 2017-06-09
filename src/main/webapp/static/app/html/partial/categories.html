@@ -1,0 +1,37 @@
+<div ng-controller="CategoryController" ng-init="getCategories()">
+<h1>categories</h1>
+
+    <table>
+
+        <thead>
+            <tr>
+                <td>serial number</td>
+                <td>name</td>
+                <td>description</td>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="category in categories">
+                <td>{{category.id}}</td>
+                <td>{{category.name}}</td>
+                <td>{{category.description}}</td>
+            </tr>
+        </tbody>
+
+    </table>
+
+    <label>sort by:<select ng-model="sortCat">
+                    <option value="id">serial number</option>
+                    <option value="name">name</option>
+                </select>
+
+                <select ng-model="directionCat">
+                    <option value="ASC">ASC</option>
+                    <option value="DESC">DESC</option>
+                </select>
+
+                <button ng-click="getCategories()">Sort</button>
+
+    </label>
+
+</div>

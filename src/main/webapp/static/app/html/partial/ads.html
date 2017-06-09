@@ -1,0 +1,52 @@
+<div ng-controller="AdController" ng-init="getAds()">
+    <script>
+            $(function(){
+			 $('.datepicker').datepicker();
+			});
+		</script>
+    <h1>ads</h1>
+
+    <table>
+
+        <thead>
+        <tr>
+            <td>serial number</td>
+            <td>ad name</td>
+            <td>category name</td>
+            <td>posted date</td>
+            <td>expiry date</td>
+            <td>author name</td>
+        </tr>
+        </thead>
+        <tbody>
+        <tr ng-repeat="ad in ads">
+            <td>{{ad.id}}</td>
+            <td>{{ad.adName}}</td>
+            <td>{{ad.categoryName}}</td>
+            <td>{{ad.postedDate}}</td>
+            <td>{{ad.expiryDate}}</td>
+            <td>{{ad.authorName}}</td>
+        </tr>
+        </tbody>
+
+    </table>
+
+    <label>sort by:<select ng-model="sortCat">
+        <option value="id">serial number</option>
+        <option value="name">name</option>
+    </select>
+
+        <select ng-model="directionCat">
+            <option value="ASC">ASC</option>
+            <option value="DESC">DESC</option>
+        </select>
+
+        <button ng-click="getCategories()">Sort</button>
+
+    </label>
+    <br>
+    <div class="well">
+        filter by expiry date : <input class="datepicker"  id="dateFilter" ng-value="expiryDateFilter">
+    </div>
+
+</div>
