@@ -2,6 +2,8 @@ package jwd.service.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.sql.Date;
@@ -29,7 +31,18 @@ public class AdServiceImpl implements AdService {
 
   @Override
   public List<Ad> findByExpiryDateAfter(Date date) {
+
     return adRepository.findByExpiryDateAfter(date);
+  }
+
+  @Override
+  public List<Ad> findByName(String nameSearch) {
+    return adRepository.findByNameLike("%" + nameSearch + "%");
+  }
+
+  @Override
+  public Page<Ad> findAll(String sortAd, String directionAd) {
+    return adRepository.findAll(new PageRequest(0,5, Sort.Direction.fromString(directionAd), sortAd));
   }
 
 

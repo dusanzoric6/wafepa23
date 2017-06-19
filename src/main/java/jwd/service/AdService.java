@@ -14,7 +14,8 @@ public interface AdService {
   Ad findAd(Long id);
   List<Ad> findAll();
   List<Ad> findByExpiryDateAfter(Date date);
-//  Page<Ad> findAll(String sortCat, String directionCat);
+  List<Ad> findByName(String nameSearch);
+  Page<Ad> findAll(String sortAd, String directionCat);
   Ad save(Ad ad);
   void delete(Long id);
 }

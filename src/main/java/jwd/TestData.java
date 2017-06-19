@@ -2,6 +2,8 @@ package jwd;
 
 import javax.annotation.PostConstruct;
 
+import jwd.model.Author;
+import jwd.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -9,10 +11,6 @@ import java.sql.Date;
 import java.util.Calendar;
 import jwd.model.Ad;
 import jwd.model.Category;
-import jwd.service.AdService;
-import jwd.service.AddressService;
-import jwd.service.CategoryService;
-import jwd.service.UserService;
 
 @Component
 public class TestData {
@@ -29,6 +27,9 @@ public class TestData {
   @Autowired
   AdService adService;
 
+  @Autowired
+  AuthorService authorService;
+
   @PostConstruct
   public void init(){
 
@@ -38,10 +39,18 @@ public class TestData {
       category.setDescription("description "+i);
       categoryService.save(category);
 
+      Author author = new Author();
+      author.setName("author name "+i);
+      author.setEmail("author email "+i);
+      author.setPhone("author phone "+i);
+      authorService.save(author);
+
       for (int j = -1; j <= 4; j++) {
         Ad ad = new Ad();
         ad.setName(j + " ad name");
+        ad.setText("ad text "+j);
         ad.setCategory(category);
+        ad.setAuthor(author);
 
         Date today = new Date(Calendar.getInstance().getTime().getTime());
         ad.setPostedDate(today);
@@ -49,7 +58,10 @@ public class TestData {
 
         adService.save(ad);
       }
+
+
     }
+
 
 
 

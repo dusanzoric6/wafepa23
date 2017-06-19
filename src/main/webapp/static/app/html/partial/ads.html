@@ -6,7 +6,7 @@
 		</script>
     <h1>ads</h1>
 
-    <table>
+    <table class="table">
 
         <thead>
         <tr>
@@ -26,27 +26,35 @@
             <td>{{ad.postedDate}}</td>
             <td>{{ad.expiryDate}}</td>
             <td>{{ad.authorName}}</td>
+            <td><a class="btn btn-info btn-xs" href="/#!/ads/view/{{ad.id}}">Details</a></td>
         </tr>
         </tbody>
 
     </table>
 
-    <label>sort by:<select ng-model="sortCat">
+    <label>sort by:<select ng-model="sortAd">
         <option value="id">serial number</option>
-        <option value="name">name</option>
+        <option value="postedDate">posted date</option>
+        <option value="expiryDate">expiry date</option>
+        <!--<option value="author.name">author's name</option>-->
     </select>
 
-        <select ng-model="directionCat">
+        <select ng-model="directionAd">
             <option value="ASC">ASC</option>
             <option value="DESC">DESC</option>
         </select>
 
-        <button ng-click="getCategories()">Sort</button>
+        <button ng-click="getAds()">Sort</button>
 
     </label>
     <br>
     <div class="well">
-        filter by expiry date : <input class="datepicker"  id="dateFilter" ng-value="expiryDateFilter">
+        filter by expiry date : <input placeholder="yyyy-mm-dd" ng-model="expiryDateFilter">
+        <button ng-click="getAds()">Filter</button>
+    </div>
+    <div class="well">
+        filter by name : <input ng-model="nameSearch">
+        <button ng-click="getAds()">Filter</button>
     </div>
 
 </div>

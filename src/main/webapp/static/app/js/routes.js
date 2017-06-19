@@ -13,5 +13,9 @@ wafepaApp.config(['$routeProvider', function($routeProvider) {
                    templateUrl : '/static/app/html/partial/ads.html',
                    controller: 'AdController'
                })
+        .when('/ads/view/:id', {
+                    templateUrl : '/static/app/html/partial/viewAd.html',
+                    controller: 'AdController'
+                })
 
 }]);

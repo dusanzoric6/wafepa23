@@ -15,10 +15,19 @@ public class Ad {
   @ManyToOne(fetch = FetchType.EAGER)
   private Category category;
   private String name;
+  private String text;
   private Date postedDate;
   private Date expiryDate;
   @ManyToOne(fetch = FetchType.EAGER)
   private Author author;
+
+  public String getText() {
+    return text;
+  }
+
+  public void setText(String text) {
+    this.text = text;
+  }
 
   public Long getId() {
     return id;

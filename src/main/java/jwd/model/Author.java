@@ -1,5 +1,6 @@
 package jwd.model;
 
+import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
@@ -13,12 +14,16 @@ public class Author {
   @GeneratedValue
   private Long id;
   private String name;
+  private String email;
+  private String phone;
   @OneToMany(mappedBy = "author", cascade = CascadeType.REMOVE)
-  private List<Ad> ads;
+  private List<Ad> ads = new ArrayList<>();
 
   public List<Ad> getAds() {
     return ads;
   }
+
+
 
   public void addAd(Ad ad) {
     this.ads.add(ad);
@@ -30,6 +35,22 @@ public class Author {
   public void removeAd(Ad ad){
     ad.setCategory(null);
     this.ads.remove(ad);
+  }
+
+  public String getEmail() {
+    return email;
+  }
+
+  public void setEmail(String email) {
+    this.email = email;
+  }
+
+  public String getPhone() {
+    return phone;
+  }
+
+  public void setPhone(String phone) {
+    this.phone = phone;
   }
 
   public Long getId() {

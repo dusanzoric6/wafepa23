@@ -79,15 +79,17 @@ $(function(){
 wafepaApp.controller('AdController', function($scope, $http, $location, $routeParams) {
 
         $scope.expiryDateFilter;
-         = document.getElementById("dateFilter").text;
+        $scope.nameSearch;
 
         $scope.getAds = function(){
                    $http({
                      method: 'GET',
                      url: '/ads',
                      params: {
-//                     'sortCat': $scope.sortCat,
-//                              'directionCat': $scope.directionCat
+                     'expiryDateFilter' : $scope.expiryDateFilter,
+                     'sortAd': $scope.sortAd,
+                     'directionAd': $scope.directionAd,
+                     'nameSearch' : $scope.nameSearch
                               }
 
                    }).then(
@@ -109,17 +111,17 @@ wafepaApp.controller('AdController', function($scope, $http, $location, $routePa
                         alert('Error with Get Users');
                      });
                 };
-        $scope.initCategory = function(){
-          $scope.newUser = {};
+        $scope.initAd = function(){
+          $scope.Ad = {};
 
           if($routeParams.id){
             $http({
                    method: 'GET',
-                   url: '/users/'+$routeParams.id
+                   url: '/ads/'+$routeParams.id
                  }).then(function successCallback(response) {
-                      $scope.newUser = response.data;
+                      $scope.Ad = response.data;
                    }, function errorCallback(response) {
-                      alert('Error with Get Users');
+                      alert('Error with Get Ad');
                    });
           }
 

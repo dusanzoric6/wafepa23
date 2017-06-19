@@ -17,4 +17,7 @@ public interface AdRepository extends JpaRepository<Ad,Long> {
   List<Ad> findAll();
 //  @Query("select * from jwd.ad where expiry_date > :expiryDate")
   List<Ad> findByExpiryDateAfter(Date date);
+
+  List<Ad> findByNameLike(String name);
+
 }
