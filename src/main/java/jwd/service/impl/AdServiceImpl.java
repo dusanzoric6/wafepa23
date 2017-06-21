@@ -25,25 +25,26 @@ public class AdServiceImpl implements AdService {
   }
 
   @Override
-  public List<Ad> findAll() {
-    return adRepository.findByExpiryDateAfter(new Date(Calendar.getInstance().getTime().getTime()));
-  }
-
-  @Override
-  public List<Ad> findByExpiryDateAfter(Date date) {
-
-    return adRepository.findByExpiryDateAfter(date);
-  }
-
-  @Override
-  public List<Ad> findByName(String nameSearch) {
-    return adRepository.findByNameLike("%" + nameSearch + "%");
+  public Page<Ad> findAll() {
+    return adRepository.findByExpiryDateAfter(new Date(Calendar.getInstance().getTime().getTime()), new PageRequest(0,4));
   }
 
   @Override
   public Page<Ad> findAll(String sortAd, String directionAd) {
     return adRepository.findAll(new PageRequest(0,5, Sort.Direction.fromString(directionAd), sortAd));
   }
+
+  @Override
+  public Page<Ad> findByExpiryDateAfter(Date date) {
+
+    return adRepository.findByExpiryDateAfter(date, new PageRequest(0,4));
+  }
+
+  @Override
+  public Page<Ad> findByName(String nameSearch) {
+    return adRepository.findByNameLike("%" + nameSearch + "%", new PageRequest(0,4));
+  }
+
 
 
   @Override

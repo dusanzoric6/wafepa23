@@ -3,6 +3,7 @@ package jwd;
 import javax.annotation.PostConstruct;
 
 import jwd.model.Author;
+import jwd.model.Role;
 import jwd.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -40,6 +41,12 @@ public class TestData {
       categoryService.save(category);
 
       Author author = new Author();
+      author.setEnabled(true);
+      author.setPassword("password"+i);
+      author.setUsername("username"+i);
+//      Role role = new Role();
+//      role.setName("ROLE_USER");
+//      author.setRole(role);
       author.setName("author name "+i);
       author.setEmail("author email "+i);
       author.setPhone("author phone "+i);

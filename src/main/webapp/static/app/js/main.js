@@ -2,11 +2,6 @@ var wafepaApp = angular.module('wafepaApp', ['wafepaApp.routes']);
 
 wafepaApp.controller('CategoryController', function($scope, $http, $location, $routeParams) {
 
-$(function(){
-   $('.datepicker').datepicker();
-			});
-
-
         $scope.getCategories = function(){
                    $http({
                      method: 'GET',
@@ -80,6 +75,8 @@ wafepaApp.controller('AdController', function($scope, $http, $location, $routePa
 
         $scope.expiryDateFilter;
         $scope.nameSearch;
+        $scope.Ad;
+
 
         $scope.getAds = function(){
                    $http({
@@ -111,15 +108,16 @@ wafepaApp.controller('AdController', function($scope, $http, $location, $routePa
                         alert('Error with Get Users');
                      });
                 };
+
         $scope.initAd = function(){
-          $scope.Ad = {};
+          $scope.ad = {};
 
           if($routeParams.id){
             $http({
                    method: 'GET',
                    url: '/ads/'+$routeParams.id
                  }).then(function successCallback(response) {
-                      $scope.Ad = response.data;
+                      $scope.ad = response.data;
                    }, function errorCallback(response) {
                       alert('Error with Get Ad');
                    });
@@ -127,7 +125,7 @@ wafepaApp.controller('AdController', function($scope, $http, $location, $routePa
 
         };
 
-        $scope.saveUser = function(){
+        $scope.saveAd = function(){
          if($routeParams.id){ //edit
                     $http({
                            method: 'PUT',
@@ -136,17 +134,17 @@ wafepaApp.controller('AdController', function($scope, $http, $location, $routePa
                          }).then(function successCallback(response) {
                               $location.path('/users');
                            }, function errorCallback(response) {
-                              alert('Error with PUT Users');
+                              alert('Error with PUT Ad');
                            });
                   }else{
                            $http({
                              method: 'POST',
-                             url: '/users',
-                             data : $scope.newUser
+                             url: '/ads',
+                             data : $scope.ad
                            }).then(function successCallback() {
-                               $location.path('/users');
+                               $location.path('/ads');
                              }, function errorCallback(response) {
-                                alert('Error with POST User');
+                                alert('Error with POST Ad');
                              });
                         };
                    }

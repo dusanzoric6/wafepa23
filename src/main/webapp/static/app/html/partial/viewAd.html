@@ -1,30 +1,17 @@
 <div ng-init="initAd()">
-    <table class="table">
-        <thead>
-        <tr>
-            <td>ad name</td>
-            <td>ad text</td>
-            <td>posted date</td>
-            <td>expiry date</td>
-            <td>author name</td>
-            <td>author email</td>
-            <td>author phone</td>
-        </tr>
-        </thead>
-        <tbody>
-        <tr>
-            <td>{{Ad.adName}}</td>
-            <td>{{Ad.adText}}</td>
-            <td>{{Ad.postedDate}}</td>
-            <td>{{Ad.expiryDate}}</td>
-            <td>{{Ad.authorName}}</td>
-            <td>{{Ad.authorEmail}}</td>
-            <td>{{Ad.authorPhone}}</td>
 
-        </tr>
-        </tbody>
-
-    </table>
+    <h2>{{ad.adName}} details</h2>
+    <br>
+    <textarea rows="4" cols="50">
+        {{ad.adText}}
+    </textarea>
+    <br>
+    <label>posted date : {{ad.postedDate}}</label>
+    <br>
+    <label>expiry date : {{ad.expiryDate}}</label>
+    <br>
+    <label>author : {{ad.authorName}}, {{ad.authorEmail}}, {{ad.authorPhone}}</label>
+    <br>
     <br>
     <a class="btn btn-info btn-xs" href="/#!/ads">ads</a>
 

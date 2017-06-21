@@ -15,9 +15,9 @@ public class AdToAdDetailsDTO implements Converter<Ad,AdDetailsDTO> {
         adDetailsDTO.setId(ad.getId());
         adDetailsDTO.setAdName(ad.getName());
         adDetailsDTO.setAdText(ad.getText());
-        adDetailsDTO.setAuthorName(ad.getAuthor().getName());
-        adDetailsDTO.setAuthorEmail(ad.getAuthor().getEmail());
-        adDetailsDTO.setAuthorPhone(ad.getAuthor().getPhone());
+//        adDetailsDTO.setAuthorName(ad.getAuthor().getName());
+//        adDetailsDTO.setAuthorEmail(ad.getAuthor().getEmail());
+//        adDetailsDTO.setAuthorPhone(ad.getAuthor().getPhone());
         adDetailsDTO.setExpiryDate(ad.getExpiryDate());
         adDetailsDTO.setPostedDate(ad.getPostedDate());
 

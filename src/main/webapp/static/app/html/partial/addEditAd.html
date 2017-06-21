@@ -1,0 +1,28 @@
+<div  ng-init="initAd()">
+
+    <h2>Add the ad</h2>
+    <br>
+    <label>ad name : <input type="text" ng-model="ad.adName"></label>
+    <br>
+    <textarea rows="4" cols="50" ng-model="ad.adText">
+        {{ad.adText}}
+    </textarea>
+    <br>
+    <div ng-controller="CategoryController" ng-init="getCategories()">
+        <label>category: </label><select ng-model="ad.categoryId" >
+            <option
+                    value="{{category.id}}"
+                    ng-repeat="category in categories">
+                {{category.name}}
+            </option>
+        </select>
+    </div>
+    <br>
+    <button ng-click="saveAd()">save ad</button>
+
+
+    <br>
+    <a href="/#!/ads">ads</a>
+
+
+</div>

@@ -1,5 +1,8 @@
 package jwd.repository;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.PagingAndSortingRepository;
@@ -11,13 +14,8 @@ import java.util.List;
 import jwd.model.Ad;
 
 @Repository
-public interface AdRepository extends JpaRepository<Ad,Long> {
-//  "select o from Oglas o where o.datumIsteka > :datumIsteka"
-//  @Query("select a from Ad where a.expiryDate >= '2017-07-08'")
-  List<Ad> findAll();
-//  @Query("select * from jwd.ad where expiry_date > :expiryDate")
-  List<Ad> findByExpiryDateAfter(Date date);
-
-  List<Ad> findByNameLike(String name);
+public interface AdRepository extends PagingAndSortingRepository<Ad,Long> {
+  Page<Ad> findByExpiryDateAfter(Date date, Pageable pageable);
+  Page<Ad> findByNameLike(String name, Pageable pageable);
 
 }

@@ -12,9 +12,9 @@ import jwd.model.Ad;
 public interface AdService {
 
   Ad findAd(Long id);
-  List<Ad> findAll();
-  List<Ad> findByExpiryDateAfter(Date date);
-  List<Ad> findByName(String nameSearch);
+  Page<Ad> findAll();
+  Page<Ad> findByExpiryDateAfter(Date date);
+  Page<Ad> findByName(String nameSearch);
   Page<Ad> findAll(String sortAd, String directionCat);
   Ad save(Ad ad);
   void delete(Long id);
