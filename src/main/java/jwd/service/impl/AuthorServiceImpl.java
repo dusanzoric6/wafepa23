@@ -2,6 +2,8 @@ package jwd.service.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -38,5 +40,14 @@ public class AuthorServiceImpl implements AuthorService {
   @Override
   public void delete(Long id) {
     authorRepository.getOne(id);
+  }
+
+  @Override
+  public UserDetails loadUserByUsername(String name) throws UsernameNotFoundException {
+    Author author = authorRepository.findByName(name);
+    if (author==null){
+      throw new UsernameNotFoundException("Author not found");
+    }
+    return author;
   }
 }
